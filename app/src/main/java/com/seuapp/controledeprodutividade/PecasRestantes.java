@@ -16,6 +16,7 @@ public class PecasRestantes {
 
     public String data;
     public String usuarioRe;
+    public String departamento;
     public int ligacao;
     public int solda;
     public int bandagem;
@@ -26,14 +27,19 @@ public class PecasRestantes {
     public PecasRestantes() {
     }
 
-    public PecasRestantes(String data, String usuarioRe, int ligacao, int solda, int bandagem, int amarracao, int prenca, int acabamento) {
+    public PecasRestantes(String data, String usuarioRe, String departamento, int ligacao, int solda, int bandagem, int amarracao, int prenca, int acabamento) {
         this.data = data;
         this.usuarioRe = usuarioRe;
+        this.departamento = departamento;
         this.ligacao = ligacao;
         this.solda = solda;
         this.bandagem = bandagem;
         this.amarracao = amarracao;
         this.prenca = prenca;
         this.acabamento = acabamento;
+    }
+
+    public PecasRestantes(String data, String usuarioRe, int ligacao, int solda, int bandagem, int amarracao, int prenca, int acabamento) {
+        this(data, usuarioRe, "", ligacao, solda, bandagem, amarracao, prenca, acabamento);
     }
 }

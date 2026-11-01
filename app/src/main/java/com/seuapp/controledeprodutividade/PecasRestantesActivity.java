@@ -24,6 +24,7 @@ public class PecasRestantesActivity extends AppCompatActivity {
     private AppDatabase db;
     private FirebaseFirestore firestore;
     private String usuarioRe;
+    private String usuarioDepto;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,6 +41,7 @@ public class PecasRestantesActivity extends AppCompatActivity {
 
         SharedPreferences preferences = getSharedPreferences("SessaoUsuario", Context.MODE_PRIVATE);
         usuarioRe = preferences.getString("RE_USUARIO", "");
+        usuarioDepto = preferences.getString("DEPTO_USUARIO", "");
 
         editLigacao = findViewById(R.id.editLigacao);
         editSolda = findViewById(R.id.editSolda);
@@ -78,7 +80,7 @@ public class PecasRestantesActivity extends AppCompatActivity {
         SimpleDateFormat df = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss", Locale.getDefault());
         String dataAtual = df.format(Calendar.getInstance().getTime());
 
-        PecasRestantes pecas = new PecasRestantes(dataAtual, usuarioRe, nLigacao, nSolda, nBandagem, nAmarracao, nPrensa, nAcabamento);
+        PecasRestantes pecas = new PecasRestantes(dataAtual, usuarioRe, usuarioDepto, nLigacao, nSolda, nBandagem, nAmarracao, nPrensa, nAcabamento);
 
         // Enviar para o Firebase
         firestore.collection("pecas_restantes").add(pecas)
